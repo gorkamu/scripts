@@ -3,7 +3,7 @@
 import sys
 import os.path
 
-def readlines(data):
+def readlines(data):    
     for line in data:
         sanitized_data=line.strip()
         input_list=sanitized_data.split()
