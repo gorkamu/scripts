@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+
+import sys
+import json
+import argparse
+import privatebinapi
+from pygments import highlight, lexers, formatters
+
+_SERVICE_INSTANCE='https://privatebin.net/'
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-t', '--text', action='store', required=True)
+parser.add_argument('-e','--expiration', action='store', choices=['5min', '10min', '1hour', '1week', '1month', '1year', 'never'], default='10min', required=False)
+parser.add_argument('-p','--password', action='store', required=False)
+parser.add_argument('-b','--burn', action='store_true', default=False, required=False)
+args = parser.parse_args()
+
+if args.password is None:
+    response=privatebinapi.send(
+        _SERVICE_INSTANCE,
+        text=args.text,
+        expiration=args.expiration,
+        burn_after_reading=args.burn
+    )
+else:
+    response=privatebinapi.send(
+        _SERVICE_INSTANCE,
+        text=args.text,
+        expiration=args.expiration,
+        password=args.password,
+        burn_after_reading=args.burn
+    )    
+
+
+
+if response["full_url"]:
+    json_response = json.dumps(response, indent=4)
+    colorful_json=highlight(json_response, lexers.JsonLexer(), formatters.TerminalFormatter())
+    print(colorful_json)
+
+
+sys.exit(1)
