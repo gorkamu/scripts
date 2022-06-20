@@ -5,6 +5,7 @@ Just run it as it follows:
 
 ```
 $ emptytrash
-//Output
+
+//Output:
 [+] Emptied Shared Trash
 ```
