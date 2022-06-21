@@ -9,3 +9,6 @@ This is a set of scripts and utilities to make life easier for any unix environm
 | [emptytrash](./emptytrash/README.md) | Clean trash folder |
 | [transfer](./transfer/README.md) | Upload file |
 | [privatebin](./privatebin/README.md) | Upload text to privatebin service |
+| [tolower](./tolower/README.md) | Transform any text to lower case |
+| [toupper](./toupper/README.md) | Transform any text to upper case |
+| [tocamel](./tocamel/README.md) | Transform any text to camel case |
